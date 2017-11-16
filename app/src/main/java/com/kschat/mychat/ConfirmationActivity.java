@@ -10,13 +10,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.sandro.restaurant.Restaurant;
 
 public class ConfirmationActivity extends AppCompatActivity {
 
     private Button confirmationButton;
-    private TextInputEditText typedCodeET;
+    private EditText typedCodeET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class ConfirmationActivity extends AppCompatActivity {
 
     private void init() {
         confirmationButton = (Button) findViewById(R.id.confirmationButton);
-        typedCodeET = (TextInputEditText) findViewById(R.id.typedCodeET);
+        typedCodeET = (EditText) findViewById(R.id.typedCodeET);
 
         confirmationButton.setOnClickListener(new View.OnClickListener() {
             @Override

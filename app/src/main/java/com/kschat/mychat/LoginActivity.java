@@ -20,9 +20,7 @@ import android.widget.TextView;
 import com.hbb20.CountryCodePicker;
 import com.sandro.restaurant.Restaurant;
 
-import static com.kschat.mychat.R.id.typedCodeET;
-
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private CountryCodePicker countryCodePicker;
     private Button loginButton;
@@ -104,9 +102,5 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         });
-    }
-
-    private boolean validateLogin(String typedCode, String typedPass) {
-        return false;
     }
 }
