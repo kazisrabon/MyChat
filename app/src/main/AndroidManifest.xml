@@ -21,7 +21,11 @@
         <activity android:name=".RegActivity" />
         <activity android:name=".ConfirmationActivity" />
         <activity android:name=".BaseActivity" />
-        <activity android:name=".SuccessfullActivity"/>
+        <activity android:name=".SuccessfullActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/MyTheme"></activity>
     </application>
 
 </manifest>

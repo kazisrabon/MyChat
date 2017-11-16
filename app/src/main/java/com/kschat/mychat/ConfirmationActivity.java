@@ -1,11 +1,10 @@
 package com.kschat.mychat;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,7 +13,7 @@ import android.widget.EditText;
 
 import com.sandro.restaurant.Restaurant;
 
-public class ConfirmationActivity extends AppCompatActivity {
+public class ConfirmationActivity extends BaseActivity {
 
     private Button confirmationButton;
     private EditText typedCodeET;
@@ -23,11 +22,6 @@ public class ConfirmationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow(); // in Activity's onCreate() for instance
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
 
         init();
     }
@@ -46,6 +40,8 @@ public class ConfirmationActivity extends AppCompatActivity {
                             .setBackgroundColor(Color.GRAY)
                             .setTextColor(Color.GREEN)
                             .show();
+
+                    startActivity(new Intent(ConfirmationActivity.this, SuccessfullActivity.class));
                 } else {
                     new Restaurant(ConfirmationActivity.this, "NOT VALIDATE!!!", Snackbar.LENGTH_LONG)
                             .setBackgroundColor(Color.BLACK)
@@ -54,9 +50,5 @@ public class ConfirmationActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private boolean validateConfirmationCode(String typedCode) {
-        return false;
     }
 }

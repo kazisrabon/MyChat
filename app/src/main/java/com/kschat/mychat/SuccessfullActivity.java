@@ -1,10 +1,14 @@
 package com.kschat.mychat;
 
+import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SuccessfullActivity extends AppCompatActivity {
 
@@ -13,9 +17,15 @@ public class SuccessfullActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_successfull);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow(); // in Activity's onCreate() for instance
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
+        Timer t = new Timer();
+        t.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+
+                startActivity(new Intent(SuccessfullActivity.this, MainActivity.class));
+                // If you want to call Activity then call from here for 5 seconds it automatically call and your image disappear....
+            }
+        }, 5000);
     }
 }

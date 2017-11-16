@@ -11,6 +11,10 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public boolean validateLogin(String typedCode, String typedPass) {
-        return false;
+        return true;
+    }
+
+    public boolean validateConfirmationCode(String typedCode) {
+        return true;
     }
 }
