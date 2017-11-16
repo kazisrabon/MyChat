@@ -7,10 +7,14 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.hbb20.CountryCodePicker;
@@ -23,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private CountryCodePicker countryCodePicker;
     private Button loginButton;
     private TextView signUpTV;
-    private TextInputEditText typedPhoneET, typedPassET;
+    private EditText typedPhoneET, typedPassET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +49,8 @@ public class LoginActivity extends AppCompatActivity {
 
         loginButton = (Button) findViewById(R.id.loginButton);
         signUpTV = (TextView) findViewById(R.id.signUpTV);
-        typedPhoneET = (TextInputEditText) findViewById(R.id.typedPhoneET);
-        typedPassET = (TextInputEditText) findViewById(R.id.typedPassET);
+        typedPhoneET = (EditText) findViewById(R.id.phoneNumberET);
+        typedPassET = (EditText) findViewById(R.id.passET);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +76,32 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity( new Intent(getApplicationContext(), RegActivity.class));
+            }
+        });
+
+        typedPassET.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent motionEvent) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    if(motionEvent.getRawX() >= (typedPassET.getRight() - typedPassET.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        // your action here
+                        typedPassET.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                        return true;
+                    }
+                }
+                else if(motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    if(motionEvent.getRawX() >= (typedPassET.getRight() - typedPassET.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        // your action here
+                        typedPassET.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                        return true;
+                    }
+                }
+                return false;
             }
         });
     }
