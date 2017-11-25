@@ -11,19 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme"
         tools:replace="android:icon">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegActivity" />
-        <activity android:name=".ConfirmationActivity" />
-        <activity android:name=".BaseActivity" />
-        <activity android:name=".SuccessfullActivity" />
+        <activity android:name=".activity.RegActivity" />
+        <activity android:name=".activity.ConfirmationActivity" />
+        <activity android:name=".activity.BaseActivity" />
+        <activity android:name=".activity.SuccessfullActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/MyTheme"></activity>
     </application>
