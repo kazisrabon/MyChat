@@ -2,6 +2,7 @@ package com.kschat.mychat.adapter;
 
 import android.content.ClipData;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,10 +31,10 @@ public class CgListAdapter extends RecyclerView.Adapter<CgListAdapter.MyViewHold
         MyViewHolder holder = null;
         switch (viewType) {
             case R.layout.frag_cg_header_item:
-                holder = new CgListViewHolder(view);
+                holder = new CgHeaderViewHolder(view);
                 break;
             case R.layout.frag_cg_list_item:
-                holder = new CgHeaderViewHolder(view);
+                holder = new CgListViewHolder(view);
                 break;
         }
         return holder;
@@ -41,7 +42,16 @@ public class CgListAdapter extends RecyclerView.Adapter<CgListAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.bind(contactGroupList.get(holder.getAdapterPosition()));
+        Log.e("Position", position+"");
+        switch (position) {
+            case 0:
+                holder.bind("Contact Group");
+                break;
+
+            default:
+                holder.bind(contactGroupList.get(holder.getAdapterPosition()));
+                break;
+        }
     }
 
     @Override
@@ -54,8 +64,6 @@ public class CgListAdapter extends RecyclerView.Adapter<CgListAdapter.MyViewHold
         switch (position) {
             case 0:
                 return R.layout.frag_cg_header_item;
-            case 1:
-                return R.layout.frag_cg_list_item;
             default:
                 return R.layout.frag_cg_list_item;
         }
@@ -71,6 +79,7 @@ public class CgListAdapter extends RecyclerView.Adapter<CgListAdapter.MyViewHold
         }
 
         abstract void bind(ContactGroup contactGroup);
+        abstract void bind(String s);
     }
 
     public class CgListViewHolder extends MyViewHolder{
@@ -88,10 +97,16 @@ public class CgListAdapter extends RecyclerView.Adapter<CgListAdapter.MyViewHold
 
         @Override
         void bind(ContactGroup contactGroup) {
+            Log.e("View Holder name", "cg list");
             nameTV.setText(contactGroup.getName());
-//            lastChatTV.setText(contactGroup.getLastChatLine());
+            lastChatTV.setText(contactGroup.getLastChatLine());
 //            profileIcon.setImageBitmap(contactGroup.getBitmap());
 //            checkBox.setChecked(false);
+        }
+
+        @Override
+        void bind(String s) {
+
         }
     }
 
@@ -107,7 +122,13 @@ public class CgListAdapter extends RecyclerView.Adapter<CgListAdapter.MyViewHold
 
         @Override
         void bind(ContactGroup contactGroup) {
-            nameTV.setText(contactGroup.getName());
+
+        }
+
+        @Override
+        void bind(String s) {
+            Log.e("View Holder name", "cg header");
+            nameTV.setText(s);
 //            checkBox.setChecked(false);
         }
     }
@@ -115,4 +136,5 @@ public class CgListAdapter extends RecyclerView.Adapter<CgListAdapter.MyViewHold
     public CgListAdapter(List<ContactGroup> contactGroupList) {
         this.contactGroupList = contactGroupList;
     }
+     public CgListAdapter(){}
 }
