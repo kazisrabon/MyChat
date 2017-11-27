@@ -1,0 +1,46 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.kschat.mychat.activity.ChatActivity">
+    <item
+        android:id="@+id/action_person"
+        android:orderInCategory="100"
+        android:name="@string/action_person"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_person"
+        android:title="@string/action_person"/>
+
+    <item
+        android:id="@+id/action_more_vart"
+        android:orderInCategory="100"
+        android:name="@string/action_more_vart"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_more_vart"
+        android:title="@string/action_more_vart">
+
+        <item
+            android:id="@+id/action_create_group"
+            android:orderInCategory="100"
+            android:name="@string/action_create_group"
+            android:title="@string/action_create_group"/>
+
+        <item
+            android:id="@+id/action_edit_message"
+            android:orderInCategory="100"
+            android:name="@string/action_edit_message"
+            android:title="@string/action_edit_message"/>
+
+        <item
+            android:id="@+id/action_chat_info"
+            android:orderInCategory="100"
+            android:name="@string/action_chat_info"
+            android:title="@string/action_chat_info"/>
+
+        <item
+            android:id="@+id/action_clear_chat"
+            android:orderInCategory="100"
+            android:name="@string/action_clear_chat"
+            android:title="@string/action_clear_chat"/>
+
+    </item>
+</menu>

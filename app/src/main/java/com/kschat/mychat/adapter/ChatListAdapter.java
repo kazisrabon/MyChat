@@ -1,6 +1,7 @@
 package com.kschat.mychat.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,8 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.MyView
         Chat chat = chatList.get(position);
         holder.nameTV.setText(chat.getName());
         holder.lastChatTV.setText(chat.getLastChatLine());
+        Log.e("position", position+"");
+
 //        holder.profileIcon.setImageBitmap(chat.getBitmap());
     }
 
@@ -40,15 +43,21 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.MyView
         return chatList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView nameTV, lastChatTV;
         public ImageView profileIcon;
 
         public MyViewHolder(View view) {
             super(view);
+            view.setOnClickListener(this);
             nameTV = (TextView) view.findViewById(R.id.name);
             lastChatTV = (TextView) view.findViewById(R.id.lastChatLine);
             profileIcon = (ImageView) view.findViewById(R.id.profileIcon);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Log.e("onClick ", getAdapterPosition() + " ");
         }
     }
 

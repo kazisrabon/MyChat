@@ -29,6 +29,12 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 import com.mikepenz.materialdrawer.util.KeyboardUtil;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class BaseActivity extends AppCompatActivity {
 
     private String TAG = "Base";
@@ -38,6 +44,12 @@ public class BaseActivity extends AppCompatActivity {
     private IProfile mProfile;
     private MiniDrawer mMiniDrawer = null;
     private Drawable mProfileImage;
+
+    public static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+    public static final SimpleDateFormat longDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+
+    public static final DateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.ENGLISH);
+    public static final DateFormat longTimeFormat = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +169,7 @@ public class BaseActivity extends AppCompatActivity {
                                     .getText(context), Toast.LENGTH_SHORT).show();
 //                            0
                             if (drawerItem.getIdentifier() == 0) {
-//                                startActivity(new Intent(mContext, MainActivity.class));
+                                startActivity(new Intent(context, MainActivity.class));
                             }
 //                            1
                             else if (drawerItem.getIdentifier() == 1) {
@@ -165,19 +177,19 @@ public class BaseActivity extends AppCompatActivity {
                             }
 //                            2
                             else if (drawerItem.getIdentifier() == 2) {
-//                                startActivity(new Intent(mContext, ActivityReports.class));
+                                startActivity(new Intent(context, GroupChatSettingActivity.class));
                             }
 //                            3
                             else if (drawerItem.getIdentifier() == 3) {
-//                                startActivity(new Intent(mContext, com.ps.ecourier.activities.firstLayer.ActivityProfile.class));
+                                startActivity(new Intent(context, ProfileActivity.class));
                             }
 //                            4
                             else if (drawerItem.getIdentifier() == 4) {
-//                                startActivity(new Intent(mContext, AnnouncementActivity.class));
+                                startActivity(new Intent(context, ChatActivity.class));
                             }
 //                            5
                             else if (drawerItem.getIdentifier() == 5) {
-
+                                startActivity(new Intent(context, GroupChatActivity.class));
                             }
                         }
                         return false;
@@ -231,5 +243,17 @@ public class BaseActivity extends AppCompatActivity {
 //    return false if not null
     public boolean nullCheck (String s){
         return !(s != null && !s.isEmpty() && !s.equals(""));
+    }
+
+    public String getCurrentTime() {
+
+        Date today = Calendar.getInstance().getTime();
+        return timeFormat.format(today);
+    }
+
+    public String getCurrentDate() {
+
+        Date today = Calendar.getInstance().getTime();
+        return dateFormat.format(today);
     }
 }

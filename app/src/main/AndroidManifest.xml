@@ -25,7 +25,11 @@
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/MyTheme"></activity>
+            android:theme="@style/MyTheme" />
+        <activity android:name=".activity.ChatActivity" />
+        <activity android:name=".activity.GroupChatActivity" />
+        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name=".activity.GroupChatSettingActivity"></activity>
     </application>
 
 </manifest>
